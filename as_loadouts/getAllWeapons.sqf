@@ -109,7 +109,7 @@ for "_i" from 0 to (count _tempRuckMagList) -1 do
 	if (_i == ((count _tempRuckMagList) -1)) then 
 	{
 		_strRMags1 = format ["""%1""", _tempRuckMagList select _i];
-		_strRMags = _string + _strRMags1;
+		_strRMags = _strRMags + _strRMags1;
 	}else 
 	{
 		_strRMags1 = format ["""%1""`", _tempRuckMagList select _i];
