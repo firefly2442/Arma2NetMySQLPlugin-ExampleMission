@@ -22,6 +22,10 @@ _dbloadouts = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQL ['weapon
 //This converts the string to an array
 _dbloadouts = call compile _dbloadouts;
 
+//TODO: this may change in the future??
+//only select the inner array, throw away this outer array shell
+_dbloadouts = _dbloadouts select 0;
+
 //TRACE_2("loadouts after compile array conversion: ",_dbloadouts,_unit);
 
 { _loadouts set [count _loadouts, _x select 0] } forEach _dbloadouts;
