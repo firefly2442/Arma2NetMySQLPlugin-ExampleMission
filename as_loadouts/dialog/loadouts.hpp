@@ -3,7 +3,6 @@
 class AS_Loadouts {
 	idd = AS_LOADOUTS_DIALOG;
 	movingEnable = true;
-	enableSimulation = true;
 	onLoad = "[] execVM 'as_loadouts\populateDropDowns.sqf'";
 
 	__EXEC( _xSpacing = 0.0075;  _ySpacing = 0.01;)
