@@ -65,14 +65,16 @@ class AS_Loadouts {
 		class updateExistingDropdown : HW_RscComboBox {
 			idc = AS_LOADOUTS_dropDownMenu;
 			type = CT_COMBO;
+			font = "BitStream";
 			style = ST_LEFT;
 			x = 0.3; y = 0.45;
-			w = 0.2; h = 0.1;
+			w = 0.15; h = 0.028;
 			sizeEx = 0.025;
 			rowHeight = 0.025;
 			wholeHeight = 4 * 0.025; // 3 lines to display + 1 line of the unelapsed control
 			color[] = {1,1,1,1};
 			colorText[] = {0,0,0,1};
+			colorSelectBackground[] = {0,0,0,1};
 		};
 		
 		class updateButton: HW_RscGUIShortcutButton {
