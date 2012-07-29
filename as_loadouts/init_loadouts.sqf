@@ -9,6 +9,7 @@ FUNC(getAllWeapons) = compile preprocessFileLineNumbers "as_loadouts\getAllWeapo
 FUNC(getLoadouts) = compile preprocessFileLineNumbers "as_loadouts\getLoadouts.sqf";
 
 //Bon's Arty scripts are great examples of the dialog system
+//RSLO has good examples of how to clear and set weapon loadouts from a listing
 
 //http://community.bistudio.com/wiki/Category:Scripting_Commands_ArmA2
 //http://community.bistudio.com/wiki/User_Interface_Event_Handlers
