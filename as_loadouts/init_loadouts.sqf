@@ -8,5 +8,12 @@
 FUNC(getAllWeapons) = compile preprocessFileLineNumbers "as_loadouts\getAllWeapons.sqf";
 FUNC(getLoadouts) = compile preprocessFileLineNumbers "as_loadouts\getLoadouts.sqf";
 
+//Bon's Arty scripts are great examples of the dialog system
+
+//http://community.bistudio.com/wiki/Category:Scripting_Commands_ArmA2
+//http://community.bistudio.com/wiki/User_Interface_Event_Handlers
+
+//UI Editor
+//https://community.bistudio.com/wiki/User_Interface_Editor_%28Arma_2%29
 
 createDialog "AS_Loadouts";
