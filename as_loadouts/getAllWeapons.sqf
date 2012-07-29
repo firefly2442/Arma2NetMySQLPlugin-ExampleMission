@@ -120,4 +120,6 @@ for "_i" from 0 to (count _tempRuckMagList) -1 do
 //format return value, all weapons separated out into an array
 _return_response = [_puid, _strWep, _strMags, _strWOB, _strRWep, _strRMags];
 
+//TRACE_1("Returning weapon response: ",_return_response);
+
 _return_response
