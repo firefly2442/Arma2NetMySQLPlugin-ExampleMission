@@ -11,7 +11,7 @@ _strWep = "";
 
 for "_i" from 0 to (count _weparray) -1 do
 {
-	if (_i == ((count _weparray) -1)) then 
+	if (_i == ((count _weparray) -1)) then
 	{
 		_strWep1 = format ["""%1""", _weparray select _i];
 		_strWep = _strWep + _strWep1;
@@ -22,6 +22,8 @@ for "_i" from 0 to (count _weparray) -1 do
 	};
 };
 
+//TRACE_1("Weapons: ",_strWep);
+
 
 // Grab all player magazines
 _mags = magazines player;
@@ -30,7 +32,7 @@ _strMags = "";
 
 for "_i" from 0 to (count _mags) -1 do
 {
-	if (_i == ((count _mags) -1)) then 
+	if (_i == ((count _mags) -1)) then
 	{
 		_strMags1 = format ["""%1""", _mags select _i];
 		_strMags = _strMags + _strMags1;
@@ -41,15 +43,20 @@ for "_i" from 0 to (count _mags) -1 do
 	};
 };
 
+//TRACE_1("Magazines: ",_strMags);
+
 
 // Grab player ACE_WeaponOnBack
 _WOB = [player] call ACE_fnc_WeaponOnBackName;
 
-//hint format["%1",_WOB];
+//TRACE_1("Weapons on Back (WOB): ",_WOB);
 
 _strWOB = "";
-_strWOB1 = format ["""%1""", _WOB];
-_strWOB = _strWOB1;
+if (_WOB != "") then {
+	_strWOB = format ["""%1""", _WOB];
+};
+
+//TRACE_1("_strWOB: ",_strWOB);
 
 
 // Grab player ACE backpack weapons
@@ -71,7 +78,7 @@ _strRWep = "";
 
 for "_i" from 0 to (count _tempRuckwepList) -1 do
 {
-	if (_i == ((count _tempRuckwepList) -1)) then 
+	if (_i == ((count _tempRuckwepList) -1)) then
 	{
 		_strRWep1 = format ["""%1""", _tempRuckwepList select _i];
 		_strRWep = _string + _strRWep1;
@@ -82,14 +89,16 @@ for "_i" from 0 to (count _tempRuckwepList) -1 do
 	};
 };
 
+//TRACE_1("_strRWep: ",_strRWep);
 
 // Grab player ACE backpack magazines
 _MagazinesRuckList = [player] call ACE_fnc_RuckMagazineslist;
 
+//???
+//Is this for filtering based on the mission?
 // _ruckMags = player getVariable "ACE_RuckMagContents";
-
-
 //_filtered = [_MagazinesRuckList, { (_x select 0)+ 1 }] call CBA_fnc_filter;
+
 
 _tempRuckMagList = [];
 
@@ -106,7 +115,7 @@ _strRMags = "";
 
 for "_i" from 0 to (count _tempRuckMagList) -1 do
 {
-	if (_i == ((count _tempRuckMagList) -1)) then 
+	if (_i == ((count _tempRuckMagList) -1)) then
 	{
 		_strRMags1 = format ["""%1""", _tempRuckMagList select _i];
 		_strRMags = _strRMags + _strRMags1;
@@ -116,6 +125,8 @@ for "_i" from 0 to (count _tempRuckMagList) -1 do
 		_strRMags = _strRMags + _strRMags1;
 	};
 };
+
+//TRACE_1("_strRMags: ",_strRMags);
 
 //format return value, all weapons separated out into an array
 _return_response = [_puid, _strWep, _strMags, _strWOB, _strRWep, _strRMags];
