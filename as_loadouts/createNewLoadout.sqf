@@ -1,11 +1,11 @@
 // AS Loadouts - Create Loadout
 #define DEBUG_MODE_FULL
 #include "script_component.hpp"
+#include "dialog\definitions.sqf"
+disableSerialization;
 
 _allWeapons = [] call FUNC(getAllWeapons);
 
-#include "dialog\definitions.sqf"
-disableSerialization;
 _dlg = findDisplay AS_LOADOUTS_DIALOG;
 _loadoutName = ctrlText (_dlg displayCtrl AS_LOADOUTS_LoadoutName);
 
