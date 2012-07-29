@@ -16,6 +16,8 @@ _strCreate = format ["[u=%1,n=%2,a=%3,b=%4,c=%5,d=%6,e=%7]", _allWeapons select 
 											
 //TRACE_2("strCreate variable and loadout name: ",_strCreate,_loadoutName);
 
-_create = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQL ['weapons', 'CreateNewLoadOut', '%1']", _strCreate];
-
-closedialog 0;
+//check to make sure the user entered a loadout name
+if (_loadoutName != "") then{
+	_create = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQL ['weapons', 'CreateNewLoadOut', '%1']", _strCreate];
+	closedialog 0;
+};
