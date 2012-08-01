@@ -13,11 +13,11 @@ for "_i" from 0 to (count _weparray) -1 do
 {
 	if (_i == ((count _weparray) -1)) then
 	{
-		_strWep1 = format ["""%1""", _weparray select _i];
+		_strWep1 = format ["%1", _weparray select _i];
 		_strWep = _strWep + _strWep1;
 	}else 
 	{
-		_strWep1 = format ["""%1""`", _weparray select _i];
+		_strWep1 = format ["%1`", _weparray select _i];
 		_strWep = _strWep + _strWep1;
 	};
 };
@@ -34,11 +34,11 @@ for "_i" from 0 to (count _mags) -1 do
 {
 	if (_i == ((count _mags) -1)) then
 	{
-		_strMags1 = format ["""%1""", _mags select _i];
+		_strMags1 = format ["%1", _mags select _i];
 		_strMags = _strMags + _strMags1;
 	}else 
 	{
-		_strMags1 = format ["""%1""`", _mags select _i];
+		_strMags1 = format ["%1`", _mags select _i];
 		_strMags = _strMags + _strMags1;
 	};
 };
@@ -53,7 +53,7 @@ _WOB = [player] call ACE_fnc_WeaponOnBackName;
 
 _strWOB = "";
 if (_WOB != "") then {
-	_strWOB = format ["""%1""", _WOB];
+	_strWOB = format ["%1", _WOB];
 };
 
 //TRACE_1("_strWOB: ",_strWOB);
@@ -80,11 +80,11 @@ for "_i" from 0 to (count _tempRuckwepList) -1 do
 {
 	if (_i == ((count _tempRuckwepList) -1)) then
 	{
-		_strRWep1 = format ["""%1""", _tempRuckwepList select _i];
+		_strRWep1 = format ["%1", _tempRuckwepList select _i];
 		_strRWep = _string + _strRWep1;
 	}else 
 	{
-		_strRWep1 = format ["""%1""`", _tempRuckwepList select _i];
+		_strRWep1 = format ["%1`", _tempRuckwepList select _i];
 		_strRWep = _string + _strRWep1;
 	};
 };
@@ -117,11 +117,11 @@ for "_i" from 0 to (count _tempRuckMagList) -1 do
 {
 	if (_i == ((count _tempRuckMagList) -1)) then
 	{
-		_strRMags1 = format ["""%1""", _tempRuckMagList select _i];
+		_strRMags1 = format ["%1", _tempRuckMagList select _i];
 		_strRMags = _strRMags + _strRMags1;
 	}else 
 	{
-		_strRMags1 = format ["""%1""`", _tempRuckMagList select _i];
+		_strRMags1 = format ["%1`", _tempRuckMagList select _i];
 		_strRMags = _strRMags + _strRMags1;
 	};
 };
