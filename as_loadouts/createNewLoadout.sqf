@@ -18,6 +18,6 @@ _strCreate = format ["[u=%1,n=%2,a=%3,b=%4,c=%5,d=%6,e=%7]", _allWeapons select 
 
 //check to make sure the user entered a loadout name
 if (_loadoutName != "") then{
-	_create = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQL ['weapons', 'CreateNewLoadOut', '%1']", _strCreate];
+	["as_create_new_loadout", [_strCreate]] call CBA_fnc_globalEvent;
 	closedialog 0;
 };

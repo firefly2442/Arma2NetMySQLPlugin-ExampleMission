@@ -15,7 +15,18 @@ _loadoutName = (_unit call FUNC(getLoadouts)) select (lbCurSel _loadoutsDropDown
 
 _strGet = format ["[u=%1,n=%2]", _puid, _loadoutName];
 
-_get = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQL ['weapons', 'GetLoadoutByUIDandName', '%1']", _strGet];
+["as_get_loadout_names", [_parameters]] call CBA_fnc_globalEvent;
+//https://community.bistudio.com/wiki/while
+while (isNil(ReturnedDatabaseLoadOuts)) do {
+	//busy wait until the server responds by setting this variable
+	//this variable should have locality ONLY to this specific client
+}
+
+_get = ReturnedDatabaseLoadOuts;
+
+//uninitialize our variable so we can use it again later (good memory management or something???) *shrugs*
+ReturnedDatabaseLoadOuts = nil;
+
 //TRACE_1("Returned Loadout: ",_get);
 
 //This converts the string to an array

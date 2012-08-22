@@ -3,3 +3,4 @@ p1 addAction ["<t color='#B0C4DE'>View Instructions</t>", "help.sqf",[],0,false,
 
 execVM "local_gear.sqf";
 
+execVM "server_events.sqf";

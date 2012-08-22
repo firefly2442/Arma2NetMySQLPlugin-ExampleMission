@@ -16,7 +16,5 @@ _loadoutName = (_unit call FUNC(getLoadouts)) select (lbCurSel _loadoutsDropDown
 _strDelete = format ["[u=%1,n=%2]", _puid, _loadoutName];
 //TRACE_1("Delete string: ",_strDelete);
 
-
-_delete = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQL ['weapons', 'DeleteLoadoutUsingUIDandName', '%1']", _strDelete];
-
+["as_delete_loadout", [_strDelete]] call CBA_fnc_globalEvent;
 closedialog 0;
