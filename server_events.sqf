@@ -23,12 +23,13 @@ if (isServer) then
 	] call CBA_fnc_addEventHandler;
 
 	["as_get_loadout_names", {
-		_parameters = _this select 0;
+		_unit = _this select 0;
+		_parameters = _this select 1;
 		_dbloadouts = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQL ['weapons', 'GetLoadoutNamesUsingUID', %1]", _parameters];
 		//return the result back to the specific user that called this event
 		//http://forums.bistudio.com/showthread.php?136494-ARMA-2-OA-beta-build-94209-%281-60-MP-compatible-build-post-1-60-release%29&p=2179795&viewfull=1#post2179795
-		_unit publicVariableClient "ReturnedDatabaseLoadOutNames";
 		ReturnedDatabaseLoadOutNames = _dbloadouts;
+		_unit publicVariableClient "ReturnedDatabaseLoadOutNames";
 		//Technically, this variable is kind of like a mutex for the client side
 	}
 	] call CBA_fnc_addEventHandler;
@@ -39,13 +40,14 @@ if (isServer) then
 	}
 	] call CBA_fnc_addEventHandler;
 
-	["as_get_loadout_names", {
-		_parameters = _this select 0;
+	["as_get_loadout", {
+		_unit = _this select 0;
+		_parameters = _this select 1;
 		_get = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQL ['weapons', 'GetLoadoutByUIDandName', '%1']", _parameters];
 		//return the result back to the specific user that called this event
 		//http://forums.bistudio.com/showthread.php?136494-ARMA-2-OA-beta-build-94209-%281-60-MP-compatible-build-post-1-60-release%29&p=2179795&viewfull=1#post2179795
+		ReturnedDatabaseLoadOuts = _get;
 		_unit publicVariableClient "ReturnedDatabaseLoadOuts";
-		ReturnedDatabaseLoadOuts = _dbloadouts;
 		//Technically, this variable is kind of like a mutex for the client side
 	}
 	] call CBA_fnc_addEventHandler;

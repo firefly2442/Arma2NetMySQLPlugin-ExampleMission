@@ -15,10 +15,12 @@ _parameters = format ["u=%1", getPlayerUID _unit];
 
 //TRACE_2("parameters variable: ",_parameters,_unit);
 
+//http://community.bistudio.com/wiki/owner
+_owner = owner player;
 //send the request to the server
-["as_get_loadout_names", [_parameters]] call CBA_fnc_globalEvent;
+["as_get_loadout_names", [_owner, _parameters]] call CBA_fnc_globalEvent;
 //https://community.bistudio.com/wiki/while
-while (isNil(ReturnedDatabaseLoadOutNames)) do {
+while {isNil("ReturnedDatabaseLoadOutNames")} do {
 	//busy wait until the server responds by setting this variable
 	//this variable should have locality ONLY to this specific client
 };

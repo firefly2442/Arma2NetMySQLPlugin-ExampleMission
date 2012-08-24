@@ -5,7 +5,8 @@
 disableSerialization;
 
 // Identify Player
-_puid = getPlayerUID p1;
+//https://community.bistudio.com/wiki/getPlayerUID
+_puid = getPlayerUID player;
 
 _dlg = findDisplay AS_LOADOUTS_DIALOG;
 _loadoutsDropDown = _dlg displayCtrl AS_LOADOUTS_dropDownMenu;
@@ -15,9 +16,11 @@ _loadoutName = (_unit call FUNC(getLoadouts)) select (lbCurSel _loadoutsDropDown
 
 _strGet = format ["[u=%1,n=%2]", _puid, _loadoutName];
 
-["as_get_loadout_names", [_parameters]] call CBA_fnc_globalEvent;
+//http://community.bistudio.com/wiki/owner
+_owner = owner player;
+["as_get_loadout", [_owner, _strGet]] call CBA_fnc_globalEvent;
 //https://community.bistudio.com/wiki/while
-while (isNil(ReturnedDatabaseLoadOuts)) do {
+while {isNil("ReturnedDatabaseLoadOuts")} do {
 	//busy wait until the server responds by setting this variable
 	//this variable should have locality ONLY to this specific client
 };
