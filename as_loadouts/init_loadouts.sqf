@@ -2,7 +2,7 @@
 
 //http://dev-heaven.net/docs/cba/files/extended_eventhandlers/script_macros_common-hpp.html#DEBUG_MODE_FULL
 #define DEBUG_MODE_FULL
-#include "script_component.hpp"
+#include "\x\cba\addons\main\script_macros.hpp"
 
 //initialize functions
 FUNC(getAllWeapons) = compile preprocessFileLineNumbers "as_loadouts\getAllWeapons.sqf";
@@ -17,4 +17,5 @@ FUNC(getLoadouts) = compile preprocessFileLineNumbers "as_loadouts\getLoadouts.s
 //UI Editor
 //https://community.bistudio.com/wiki/User_Interface_Editor_%28Arma_2%29
 
-createDialog "AS_Loadouts";
+//Start up the dialog system
+execVM "as_loadouts\dialog\as_plo_gui_start.sqf";

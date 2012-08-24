@@ -1,6 +1,6 @@
 // AS Loadouts - Select Loadout
 #define DEBUG_MODE_FULL
-#include "script_component.hpp"
+#include "\x\cba\addons\main\script_macros.hpp"
 #include "dialog\definitions.sqf"
 disableSerialization;
 
@@ -20,7 +20,7 @@ _strGet = format ["[u=%1,n=%2]", _puid, _loadoutName];
 while (isNil(ReturnedDatabaseLoadOuts)) do {
 	//busy wait until the server responds by setting this variable
 	//this variable should have locality ONLY to this specific client
-}
+};
 
 _get = ReturnedDatabaseLoadOuts;
 

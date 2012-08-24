@@ -1,5 +1,5 @@
-#include "as_loadouts\dialog\common.hpp"
-#include "as_loadouts\dialog\loadouts.hpp"
+#include "as_loadouts\dialog\as_plo_ui_base.hpp"
+#include "as_loadouts\dialog\as_plo_gui.hpp"
 
 class Header
 {

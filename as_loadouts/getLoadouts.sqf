@@ -1,5 +1,5 @@
 #define DEBUG_MODE_FULL
-#include "script_component.hpp"
+#include "\x\cba\addons\main\script_macros.hpp"
 
 PARAMS_1(_unit);
 
@@ -21,7 +21,7 @@ _parameters = format ["u=%1", getPlayerUID _unit];
 while (isNil(ReturnedDatabaseLoadOutNames)) do {
 	//busy wait until the server responds by setting this variable
 	//this variable should have locality ONLY to this specific client
-}
+};
 
 _dbloadoutnames = ReturnedDatabaseLoadOutNames;
 

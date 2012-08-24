@@ -1,6 +1,11 @@
+// -AS Loadouts 
+// 
+// Riouken 
+//
+
 #define DEBUG_MODE_FULL
 #include "\x\cba\addons\main\script_macros.hpp"
-#include "dialog\definitions.sqf"
+#include "definitions.sqf"
 
 //http://community.bistudio.com/wiki/disableSerialization
 disableSerialization;
@@ -23,3 +28,4 @@ lbClear _loadoutsDropDown;
 	_loadoutsDropDown lbAdd _x;
 } foreach (_unit call FUNC(getLoadouts));
 _loadoutsDropDown lbSetCurSel 0;
+
