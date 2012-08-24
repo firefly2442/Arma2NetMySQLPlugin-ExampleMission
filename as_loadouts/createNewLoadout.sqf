@@ -20,4 +20,6 @@ _strCreate = format ["[u=%1,n=%2,a=%3,b=%4,c=%5,d=%6,e=%7]", _allWeapons select 
 if (_loadoutName != "") then{
 	["as_create_new_loadout", [_strCreate]] call CBA_fnc_globalEvent;
 	closedialog 0;
+} else {
+	hint "You need to specify a name for your loadout.";
 };
