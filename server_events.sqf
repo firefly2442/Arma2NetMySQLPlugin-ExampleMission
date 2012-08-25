@@ -1,3 +1,8 @@
+#define DEBUG_MODE_FULL
+#include "\x\cba\addons\main\script_macros.hpp"
+#include "as_loadouts\dialog\definitions.sqf"
+disableSerialization;
+
 //http://community.bistudio.com/wiki/isServer
 if (isServer) then
 {
@@ -25,11 +30,13 @@ if (isServer) then
 	["as_get_loadout_names", {
 		_unit = _this select 0;
 		_parameters = _this select 1;
+		//http://community.bistudio.com/wiki/owner
+		_owner = owner _unit;
 		_dbloadouts = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQL ['weapons', 'GetLoadoutNamesUsingUID', %1]", _parameters];
 		//return the result back to the specific user that called this event
 		//http://forums.bistudio.com/showthread.php?136494-ARMA-2-OA-beta-build-94209-%281-60-MP-compatible-build-post-1-60-release%29&p=2179795&viewfull=1#post2179795
 		ReturnedDatabaseLoadOutNames = _dbloadouts;
-		_unit publicVariableClient "ReturnedDatabaseLoadOutNames";
+		_owner publicVariableClient "ReturnedDatabaseLoadOutNames";
 		//Technically, this variable is kind of like a mutex for the client side
 	}
 	] call CBA_fnc_addEventHandler;
@@ -43,12 +50,14 @@ if (isServer) then
 	["as_get_loadout", {
 		_unit = _this select 0;
 		_parameters = _this select 1;
+		//http://community.bistudio.com/wiki/owner
+		_owner = owner _unit;
 		_get = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQL ['weapons', 'GetLoadoutByUIDandName', '%1']", _parameters];
 		//return the result back to the specific user that called this event
 		//http://forums.bistudio.com/showthread.php?136494-ARMA-2-OA-beta-build-94209-%281-60-MP-compatible-build-post-1-60-release%29&p=2179795&viewfull=1#post2179795
 		ReturnedDatabaseLoadOuts = _get;
-		_unit publicVariableClient "ReturnedDatabaseLoadOuts";
+		_owner publicVariableClient "ReturnedDatabaseLoadOuts";
 		//Technically, this variable is kind of like a mutex for the client side
 	}
 	] call CBA_fnc_addEventHandler;
-}
+};

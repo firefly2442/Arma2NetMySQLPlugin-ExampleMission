@@ -15,10 +15,10 @@ _parameters = format ["u=%1", getPlayerUID _unit];
 
 //TRACE_2("parameters variable: ",_parameters,_unit);
 
-//http://community.bistudio.com/wiki/owner
-_owner = owner player;
 //send the request to the server
-["as_get_loadout_names", [_owner, _parameters]] call CBA_fnc_globalEvent;
+ReturnedDatabaseLoadOutNames = nil;
+
+["as_get_loadout_names", [_unit, _parameters]] call CBA_fnc_globalEvent;
 //https://community.bistudio.com/wiki/while
 while {isNil("ReturnedDatabaseLoadOutNames")} do {
 	//busy wait until the server responds by setting this variable
@@ -26,6 +26,8 @@ while {isNil("ReturnedDatabaseLoadOutNames")} do {
 };
 
 _dbloadoutnames = ReturnedDatabaseLoadOutNames;
+
+//TRACE_1("loadouts as retrieved for unit from db",_dbloadoutnames);
 
 //uninitialize our variable so we can use it again later (good memory management or something???) *shrugs*
 ReturnedDatabaseLoadOutNames = nil;
