@@ -32,7 +32,7 @@ class Mission
 	};
 	class Groups
 	{
-		items=3;
+		items=8;
 		class Item0
 		{
 			side="WEST";
@@ -41,7 +41,7 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={3776.0342,19,3526.3135};
+					position[]={3773.6936,19,3528.241};
 					azimut=58.717602;
 					id=0;
 					side="WEST";
@@ -89,13 +89,113 @@ class Mission
 				};
 			};
 		};
+		class Item3
+		{
+			side="WEST";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={3777.2576,19,3523.0071};
+					azimut=58.717602;
+					id=3;
+					side="WEST";
+					vehicle="USMC_Soldier";
+					player="PLAY CDG";
+					leader=1;
+					skill=0.60000002;
+					text="p2";
+				};
+			};
+		};
+		class Item4
+		{
+			side="WEST";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={3782.2144,19,3518.1877};
+					azimut=58.717602;
+					id=4;
+					side="WEST";
+					vehicle="USMC_Soldier";
+					player="PLAY CDG";
+					leader=1;
+					skill=0.60000002;
+					text="p3";
+				};
+			};
+		};
+		class Item5
+		{
+			side="WEST";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={3786.7578,19,3512.6802};
+					azimut=58.717602;
+					id=5;
+					side="WEST";
+					vehicle="USMC_Soldier";
+					player="PLAY CDG";
+					leader=1;
+					skill=0.60000002;
+					text="p4";
+				};
+			};
+		};
+		class Item6
+		{
+			side="WEST";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={3792.4033,19.23468,3507.1726};
+					azimut=58.717602;
+					id=6;
+					side="WEST";
+					vehicle="USMC_Soldier";
+					player="PLAY CDG";
+					leader=1;
+					skill=0.60000002;
+					text="p5";
+				};
+			};
+		};
+		class Item7
+		{
+			side="WEST";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={3799.0122,19.556688,3503.0413};
+					azimut=58.717602;
+					id=7;
+					side="WEST";
+					vehicle="USMC_Soldier";
+					player="PLAY CDG";
+					leader=1;
+					skill=0.60000002;
+					text="p6";
+				};
+			};
+		};
 	};
 	class Markers
 	{
 		items=1;
 		class Item0
 		{
-			position[]={3779.2585,19,3535.4072};
+			position[]={3792.2014,18.955969,3527.6968};
 			name="ammo_crate";
 			type="Empty";
 		};
