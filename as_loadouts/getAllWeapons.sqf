@@ -2,7 +2,7 @@
 #include "\x\cba\addons\main\script_macros.hpp"
 
 // Identify Player
-_puid = getPlayerUID p1;
+_puid = getPlayerUID player;
 
 
 // Grab all player weapons
