@@ -17,4 +17,4 @@ _strDelete = format ["[u=%1,n=%2]", _puid, _loadoutName];
 //TRACE_1("Delete string: ",_strDelete);
 
 ["as_delete_loadout", [_strDelete]] call CBA_fnc_globalEvent;
-closedialog 0;
+//closedialog 0;

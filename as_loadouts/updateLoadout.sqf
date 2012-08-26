@@ -19,4 +19,4 @@ _strUpdate = format ["[u=%1,n=%2,a=%3,b=%4,c=%5,d=%6,e=%7]", _allWeapons select 
 //TRACE_2("Updating loadout with gear: ",_strUpdate,_loadoutName);
 
 ["as_update_loadout", [_strUpdate]] call CBA_fnc_globalEvent;
-closedialog 0;
+//closedialog 0;
