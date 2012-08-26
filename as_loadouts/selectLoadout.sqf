@@ -96,9 +96,12 @@ waitUntil {[player] call ACE_fnc_HasRuck;};
 {_doc = [player, _x, 1] call ACE_fnc_PackWeapon;} forEach _backpack_weapon;
 
 _primary = primaryWeapon player;
+
 if (_primary != "") then
 {
-	player selectWeapon _primary;
+    player selectWeapon _primary;
+    _muzzles = getArray(configFile>>"cfgWeapons" >> _primary >> "muzzles");
+    player selectWeapon (_muzzles select 0);
 };
 
 //TRACE_1("Finished setting up weapon loadout for player: ",_unit);
