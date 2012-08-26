@@ -1,7 +1,11 @@
 // Local Ammo Crates - Gnome_AS
 private ["_crate","_crate_pos","_crate_script"];
 _crate_pos = getMarkerPos "ammo_crate";
-_crate_loadout = "tasm_blufor_loadouts.sqf";
+if (isClass(configFile >> "CfgPatches" >> "ace_main")) then {
+	_crate_loadout = "tasm_blufor_loadouts.sqf";
+} else {
+	_crate_loadout = "Vanilla_Loadouts.sqf";
+};
 _crate = "USVehicleBox" createVehicleLocal _crate_pos;
 _crate setDir 90;
 _crate setPos _crate_pos;
