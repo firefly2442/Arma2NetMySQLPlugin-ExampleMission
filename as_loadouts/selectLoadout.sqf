@@ -83,18 +83,36 @@ if ([(_get select 6), "`"] call CBA_fnc_find > 0) then {
 removeAllItems player;
 removeAllWeapons player;
 removeBackpack player;
+if (isClass(configFile >> "CfgPatches" >> "ace_main")) then
+{
+    [player, "WOB"] call ACE_fnc_RemoveGear;
 
-[player, "WOB"] call ACE_fnc_RemoveGear;
+    {player addWeapon _x;_acewob = [player, _x] call ACE_fnc_PutWeaponOnBack;} forEach _aceonback;
+    {player addMagazine _x} forEach _ammo;
+    {player addWeapon _x} forEach _weapons;
 
-{player addWeapon _x;_acewob = [player, _x] call ACE_fnc_PutWeaponOnBack;} forEach _aceonback;
-{player addMagazine _x} forEach _ammo;
-{player addWeapon _x} forEach _weapons;
+    waitUntil {[player] call ACE_fnc_HasRuck;};
+    [player, "BTH"] call ACE_fnc_RemoveGear;
+    {_doc = [player, _x, 1] call ACE_fnc_PackMagazine;} forEach _backpack_ammo;
+    {_doc = [player, _x, 1] call ACE_fnc_PackWeapon;} forEach _backpack_weapon;
 
-waitUntil {[player] call ACE_fnc_HasRuck;};
-[player, "BTH"] call ACE_fnc_RemoveGear;
-{_doc = [player, _x, 1] call ACE_fnc_PackMagazine;} forEach _backpack_ammo;
-{_doc = [player, _x, 1] call ACE_fnc_PackWeapon;} forEach _backpack_weapon;
 
+} else 
+{
+    player addBackpack _oaBackpack;
+    {
+         (unitBackpack player) addMagazineCargo [_x,1];
+    } forEach _backpack_ammo;
+
+    {
+        (unitBackpack player) addWeaponCargo [_x,1];
+
+    } forEach _backpack_weapon;
+
+    {player addMagazine _x} forEach _ammo;
+    {player addWeapon _x} forEach _weapons;
+
+}
 _primary = primaryWeapon player;
 if (_primary != "") then
 {
