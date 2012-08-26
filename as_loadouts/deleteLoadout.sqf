@@ -5,7 +5,7 @@
 disableSerialization;
 
 // Identify Player
-_puid = getPlayerUID p1;
+_puid = getPlayerUID player;
 
 _dlg = findDisplay AS_LOADOUTS_DIALOG;
 _loadoutsDropDown = _dlg displayCtrl AS_LOADOUTS_dropDownMenu;
