@@ -9,6 +9,11 @@ _allWeapons = [] call FUNC(getAllWeapons);
 _dlg = findDisplay AS_LOADOUTS_DIALOG;
 _loadoutName = ctrlText (_dlg displayCtrl AS_LOADOUTS_LoadoutName);
 
+_loNames = (_unit call FUNC(getLoadouts));
+
+if (_loadoutName in _loNames) then {
+	hint "That name is already in your saved loadouts list... You must pick a new one!";
+};
 
 _strCreate = format ["[u=%1,n=%2,a=%3,b=%4,c=%5,d=%6,e=%7]", _allWeapons select 0, _loadoutName, _allWeapons select 1,
 															_allWeapons select 2, _allWeapons select 3, 
