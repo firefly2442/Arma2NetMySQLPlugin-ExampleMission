@@ -5,7 +5,7 @@
 disableSerialization;
 
 // Identify Player
-_puid = getPlayerUID p1;
+_puid = getPlayerUID player;
 
 _dlg = findDisplay AS_LOADOUTS_DIALOG;
 _loadoutsDropDown = _dlg displayCtrl AS_LOADOUTS_dropDownMenu;
@@ -17,4 +17,6 @@ _strDelete = format ["[u=%1,n=%2]", _puid, _loadoutName];
 //TRACE_1("Delete string: ",_strDelete);
 
 ["as_delete_loadout", [_strDelete]] call CBA_fnc_globalEvent;
-closedialog 0;
+//closedialog 0;
+
+execVM "as_loadouts\dialog\as_plo_gui_setup.sqf";
