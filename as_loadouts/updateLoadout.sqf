@@ -20,3 +20,5 @@ _strUpdate = format ["[u=%1,n=%2,a=%3,b=%4,c=%5,d=%6,e=%7]", _allWeapons select 
 
 ["as_update_loadout", [_strUpdate]] call CBA_fnc_globalEvent;
 //closedialog 0;
+
+execVM "as_loadouts\dialog\as_plo_gui_setup.sqf";
