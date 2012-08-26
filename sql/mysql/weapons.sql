@@ -13,23 +13,23 @@ DELIMITER $$
 --
 -- Procedures
 --
-CREATE DEFINER=`arma`@`localhost` PROCEDURE `CreateNewLoadOut`(IN u INT(20), IN n VARCHAR(255), IN a VARCHAR(4096), IN b VARCHAR(4096), IN c VARCHAR(4096), IN d VARCHAR(4096), IN e VARCHAR(4096))
+CREATE DEFINER=`arma`@`localhost` PROCEDURE `CreateNewLoadOut`(IN u INT(20), IN n VARCHAR(255), IN a TEXT, IN b TEXT, IN c TEXT, IN d TEXT, IN e TEXT, IN f TEXT)
 BEGIN
-		INSERT into users (uid, name, ammo, weapons, backpackammo, backpackweapons, weapononback)
+		INSERT into users (uid, name, ammo, weapons, backpackammo, backpackweapons, weapononback, oabackpack)
 		VALUES(
-                       u,n,a,b,c,d,e
+                       u,n,a,b,c,d,e,f
                        );
     END$$
 
 CREATE DEFINER=`arma`@`localhost` PROCEDURE `DeleteLoadoutUsingUIDandName`(IN u INT(20), IN n VARCHAR(255))
 BEGIN
 		DELETE from users
-                WHERE uid = u AND name = n;
+                WHERE uid = u AND name = n LIMIT 1;
     END$$
 
 CREATE DEFINER=`arma`@`localhost` PROCEDURE `GetLoadoutByUIDandName`(IN u INT(20), IN n VARCHAR(255))
 BEGIN
-		SELECT uid, name, ammo, weapons, backpackammo, backpackweapons, weapononback
+		SELECT uid, name, ammo, weapons, backpackammo, backpackweapons, weapononback, oabackpack
 		FROM users
 		WHERE uid = u AND name = n;
     END$$
@@ -41,7 +41,7 @@ BEGIN
 		WHERE uid = u;
     END$$
 
-CREATE DEFINER=`arma`@`localhost` PROCEDURE `UpdateLoadoutUsingUIDandName`(IN u INT(20), IN n VARCHAR(255), IN a VARCHAR(4096), IN b VARCHAR(4096), IN c VARCHAR(4096), IN d VARCHAR(4096), IN e VARCHAR(4096))
+CREATE DEFINER=`arma`@`localhost` PROCEDURE `UpdateLoadoutUsingUIDandName`(IN u INT(20), IN n VARCHAR(255), IN a TEXT, IN b TEXT, IN c TEXT, IN d TEXT, IN e TEXT, IN f TEXT)
 BEGIN
 		UPDATE users
 		SET
@@ -49,7 +49,8 @@ BEGIN
                       weapons = b,
                       backpackammo = c,
                       backpackweapons = d,
-                      weapononback = e
+                      weapononback = e,
+					  oabackpack = f
                  WHERE uid = u AND name = n;
     END$$
 
@@ -65,10 +66,11 @@ CREATE TABLE IF NOT EXISTS `users` (
   `id` int(20) unsigned NOT NULL AUTO_INCREMENT,
   `uid` int(20) unsigned NOT NULL,
   `name` varchar(255) NOT NULL,
-  `ammo` varchar(4096) NOT NULL,
-  `weapons` varchar(4096) NOT NULL,
-  `backpackammo` varchar(4096) NOT NULL,
-  `backpackweapons` varchar(4096) NOT NULL,
-  `weapononback` varchar(4096) NOT NULL,
+  `ammo` text NOT NULL,
+  `weapons` text NOT NULL,
+  `backpackammo` text NOT NULL,
+  `backpackweapons` text NOT NULL,
+  `weapononback` text NOT NULL,
+  `oabackpack` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
