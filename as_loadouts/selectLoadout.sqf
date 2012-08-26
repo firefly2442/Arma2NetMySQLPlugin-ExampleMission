@@ -49,6 +49,7 @@ _weapons = [];
 _backpack_ammo = [];
 _backpack_weapon = [];
 _aceonback = [];
+_oabackpack = [];
 
 //https://dev-heaven.net/docs/cba/files/strings/fnc_find-sqf.html
 if ([(_get select 2), "`"] call CBA_fnc_find > 0) then {
@@ -76,9 +77,14 @@ if ([(_get select 6), "`"] call CBA_fnc_find > 0) then {
 } else {
 	_aceonback set [0, (_get select 6)];
 };
+if ([(_get select 7), "`"] call CBA_fnc_find > 0) then {
+	_oabackpack = [(_get select 7), "`"] call CBA_fnc_split;
+} else {
+	_oabackpack set [0, (_get select 7)];
+};
 
 
-//TRACE_5("After cleanup: ",_ammo,_weapons,_backpack_ammo,_backpack_weapon,_aceonback);
+//TRACE_5("After cleanup: ",_ammo,_weapons,_backpack_ammo,_backpack_weapon,_aceonback,_oabackpack);
 
 removeAllItems player;
 removeAllWeapons player;
@@ -112,16 +118,20 @@ if (isClass(configFile >> "CfgPatches" >> "ace_main")) then
     {player addMagazine _x} forEach _ammo;
     {player addWeapon _x} forEach _weapons;
 
-}
+};
 _primary = primaryWeapon player;
+TRACE_1("Primary returned: ",_primary);
 
 if (_primary != "") then
 {
+	TRACE_1("Inside the if statement: ",_unit);
     player selectWeapon _primary;
     _muzzles = getArray(configFile>>"cfgWeapons" >> _primary >> "muzzles");
     player selectWeapon (_muzzles select 0);
 };
 
-//TRACE_1("Finished setting up weapon loadout for player: ",_unit);
+TRACE_1("Finished setting up weapon loadout for player: ",_unit);
 
 closedialog 0;
+
+TRACE_1("Closing the dialog: ",_unit);
