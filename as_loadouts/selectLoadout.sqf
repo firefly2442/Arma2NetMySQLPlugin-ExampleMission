@@ -119,16 +119,23 @@ if (isClass(configFile >> "CfgPatches" >> "ace_main")) then
     {player addWeapon _x} forEach _weapons;
 
 };
-_primary = primaryWeapon player;
-TRACE_1("Primary returned: ",_primary);
 
+// Muzzle fix from Robalo.
+// http://www.alphasquad.net/home/forum/index.php?f=71&t=3039&sid=4a910e67001b8ed3320520771bccc9fe&rb_v=viewtopic&start=150#p26030
+
+firstmuz = {
+   private "_ma";
+   _ma = getArray (configFile >> "CfgWeapons" >> _this >> "muzzles");
+   if (_ma select 0 != "this") exitWith {_ma select 0};
+   _this
+};
+
+_primary = primaryWeapon player;
 if (_primary != "") then
 {
-	TRACE_1("Inside the if statement: ",_unit);
-    player selectWeapon _primary;
-    _muzzles = getArray(configFile>>"cfgWeapons" >> _primary >> "muzzles");
-    player selectWeapon (_muzzles select 0);
+   player selectWeapon (_primary call _firstmuz);
 };
+
 
 TRACE_1("Finished setting up weapon loadout for player: ",_unit);
 
