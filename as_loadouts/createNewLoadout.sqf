@@ -24,9 +24,16 @@ _strCreate = format ["[u=%1,n=%2,a=%3,b=%4,c=%5,d=%6,e=%7,f=%8]", _allWeapons se
 
 //check to make sure the user entered a loadout name
 if (_loadoutName != "") then{
+    
 	["as_create_new_loadout", [_strCreate]] call CBA_fnc_globalEvent;
 	//closedialog 0;
+    
+    // Get and Re-cache the loadouts.
+    _unit call FUNC(getLoadouts);
+    
+    // Repopulate the GUI
 	execVM "as_loadouts\dialog\as_plo_gui_setup.sqf";
+    
 } else {
 	hint "You need to specify a name for your loadout.";
 };
