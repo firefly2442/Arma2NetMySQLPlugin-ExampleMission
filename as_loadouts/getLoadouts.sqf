@@ -47,7 +47,7 @@ _dbloadoutnames = _dbloadoutnames select 0;
 
 // Cache loadouts on the player for later use.
 
-player setVariable ["as_lo_cache", _dbloadoutnames];
+player setVariable ["as_lo_cache", _loadouts];
 
 //TRACE_2("loadouts returned for unit",_loadouts,_unit);
 
