@@ -91,11 +91,11 @@ if (isClass(configFile >> "CfgPatches" >> "ace_main")) then
         if (_i == ((count _tempRuckwepList) -1)) then
         {
             _strRWep1 = format ["%1", _tempRuckwepList select _i];
-            _strRWep = _string + _strRWep1;
+            _strRWep = _strRWep + _strRWep1;
         }else 
         {
             _strRWep1 = format ["%1`", _tempRuckwepList select _i];
-            _strRWep = _string + _strRWep1;
+            _strRWep = _strRWep + _strRWep1;
         };
     };
 

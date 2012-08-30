@@ -2,7 +2,7 @@
 #define DEBUG_MODE_FULL
 #include "\x\cba\addons\main\script_macros.hpp"
 #include "dialog\definitions.sqf"
-disableSerialization;
+//disableSerialization;
 
 // Identify Player
 //https://community.bistudio.com/wiki/getPlayerUID
@@ -86,25 +86,26 @@ if ([(_get select 7), "`"] call CBA_fnc_find > 0) then {
 
 //TRACE_5("After cleanup: ",_ammo,_weapons,_backpack_ammo,_backpack_weapon,_aceonback,_oabackpack);
 
+
 removeAllItems player;
 removeAllWeapons player;
 removeBackpack player;
 if (isClass(configFile >> "CfgPatches" >> "ace_main")) then
 {
+
     [player, "WOB"] call ACE_fnc_RemoveGear;
 
     {player addWeapon _x;_acewob = [player, _x] call ACE_fnc_PutWeaponOnBack;} forEach _aceonback;
     {player addMagazine _x} forEach _ammo;
     {player addWeapon _x} forEach _weapons;
 
-    waitUntil {[player] call ACE_fnc_HasRuck;};
-    [player, "BTH"] call ACE_fnc_RemoveGear;
-    {_doc = [player, _x, 1] call ACE_fnc_PackMagazine;} forEach _backpack_ammo;
-    {_doc = [player, _x, 1] call ACE_fnc_PackWeapon;} forEach _backpack_weapon;
-
-
-} else 
-{
+    if ([player] call ACE_fnc_HasRuck) then 
+    {
+        [player, "BTH"] call ACE_fnc_RemoveGear;
+        {_doc = [player, _x, 1] call ACE_fnc_PackMagazine;} forEach _backpack_ammo;
+        {_doc = [player, _x, 1] call ACE_fnc_PackWeapon;} forEach _backpack_weapon;
+    };
+} else {
     player addBackpack _oaBackpack;
     {
          (unitBackpack player) addMagazineCargo [_x,1];
@@ -126,6 +127,7 @@ if (isClass(configFile >> "CfgPatches" >> "ace_main")) then
 firstmuz = {
    private "_ma";
    _ma = getArray (configFile >> "CfgWeapons" >> _this >> "muzzles");
+    //TRACE_1("Muzzle array: ",_ma);
    if (_ma select 0 != "this") exitWith {_ma select 0};
    _this
 };
@@ -133,12 +135,13 @@ firstmuz = {
 _primary = primaryWeapon player;
 if (_primary != "") then
 {
-   player selectWeapon (_primary call _firstmuz);
+   player selectWeapon (_primary call firstmuz);
+   // TRACE_1("Primary =  ",_primary);
 };
 
 
-TRACE_1("Finished setting up weapon loadout for player: ",_unit);
+//TRACE_1("Finished setting up weapon loadout for player: ",_unit);
 
 closedialog 0;
 
-TRACE_1("Closing the dialog: ",_unit);
+//TRACE_1("Closing the dialog: ",_unit);
