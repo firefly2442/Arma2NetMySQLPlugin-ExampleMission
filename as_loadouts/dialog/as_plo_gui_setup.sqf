@@ -24,7 +24,7 @@ _ASDialog = findDisplay AS_LOADOUTS_DIALOG;
 _loadoutsDropDown = _ASDialog displayCtrl AS_LOADOUTS_dropDownMenu;
 
 // Check if the loadouts are already cached and load them accordinly. 
-if (isNil(player getVariable "as_lo_cache")) then 
+if (isNil{player getVariable "as_lo_cache"}) then 
 {    
     // The looadouts were not cached so we need to get them.
     lbClear _loadoutsDropDown;
