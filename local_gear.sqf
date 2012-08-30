@@ -1,6 +1,7 @@
 // Local Ammo Crates - Gnome_AS
 private ["_crate","_crate_pos","_crate_script"];
 _crate_pos = getMarkerPos "ammo_crate";
+_crate_loadout = "";
 if (isClass(configFile >> "CfgPatches" >> "ace_main")) then {
 	_crate_loadout = "ACE_Loadouts.sqf";
 } else {
