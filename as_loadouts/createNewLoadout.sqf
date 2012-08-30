@@ -19,12 +19,18 @@ if (_loadoutName != "" && !(_loadoutName in _loNames)) then {
 															_allWeapons select 4, _allWeapons select 5, _allWeapons select 6];
 											
 	//TRACE_2("strCreate variable and loadout name: ",_strCreate,_loadoutName);
-
+    
 	["as_create_new_loadout", [_strCreate]] call CBA_fnc_globalEvent;
 	//closedialog 0;
+    
+    // Get and Re-cache the loadouts.
+    _unit call FUNC(getLoadouts);
+    
 	//clear out the name field
 	_loadoutName = ctrlText (_dlg displayCtrl AS_LOADOUTS_LoadoutName);
 	ctrlSetText [_loadoutName, ""];
+
+    // Repopulate the GUI
 	execVM "as_loadouts\dialog\as_plo_gui_setup.sqf";
 } else {
 	if (_loadoutName == "") then {

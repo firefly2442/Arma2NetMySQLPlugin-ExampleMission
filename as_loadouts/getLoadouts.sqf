@@ -44,6 +44,11 @@ _dbloadoutnames = _dbloadoutnames select 0;
 //TRACE_2("loadouts after compile array conversion: ",_dbloadoutnames,_unit);
 
 { _loadouts set [count _loadouts, _x select 0] } forEach _dbloadoutnames;
+
+// Cache loadouts on the player for later use.
+
+player setVariable ["as_lo_cache", _loadouts];
+
 //TRACE_2("loadouts returned for unit",_loadouts,_unit);
 
 _loadouts

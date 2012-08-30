@@ -19,4 +19,8 @@ _strDelete = format ["[u=%1,n=%2]", _puid, _loadoutName];
 ["as_delete_loadout", [_strDelete]] call CBA_fnc_globalEvent;
 //closedialog 0;
 
+// Get and Re-Cache the loadouts
+_unit call FUNC(getLoadouts);
+
+// Repopulate the GUI
 execVM "as_loadouts\dialog\as_plo_gui_setup.sqf";
