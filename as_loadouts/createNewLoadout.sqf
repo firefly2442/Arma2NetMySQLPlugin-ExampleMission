@@ -27,8 +27,7 @@ if (_loadoutName != "" && !(_loadoutName in _loNames)) then {
     _unit call FUNC(getLoadouts);
     
 	//clear out the name field
-	_loadoutName = ctrlText (_dlg displayCtrl AS_LOADOUTS_LoadoutName);
-	ctrlSetText [_loadoutName, ""];
+	ctrlSetText [AS_LOADOUTS_LoadoutName, ""];
 
     // Repopulate the GUI
 	execVM "as_loadouts\dialog\as_plo_gui_setup.sqf";
