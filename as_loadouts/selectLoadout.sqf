@@ -2,7 +2,7 @@
 #define DEBUG_MODE_FULL
 #include "\x\cba\addons\main\script_macros.hpp"
 #include "dialog\definitions.sqf"
-//disableSerialization;
+disableSerialization;
 
 // Identify Player
 //https://community.bistudio.com/wiki/getPlayerUID
