@@ -4,6 +4,11 @@
 #define DEBUG_MODE_FULL
 #include "\x\cba\addons\main\script_macros.hpp"
 
+if (isServer) then 
+{   
+execVM "as_loadouts\server_events.sqf";
+};
+
 //initialize functions
 FUNC(getAllWeapons) = compile preprocessFileLineNumbers "as_loadouts\getAllWeapons.sqf";
 FUNC(getLoadouts) = compile preprocessFileLineNumbers "as_loadouts\getLoadouts.sqf";
@@ -16,6 +21,3 @@ FUNC(getLoadouts) = compile preprocessFileLineNumbers "as_loadouts\getLoadouts.s
 
 //UI Editor
 //https://community.bistudio.com/wiki/User_Interface_Editor_%28Arma_2%29
-
-//Start up the dialog system
-execVM "as_loadouts\dialog\as_plo_gui_start.sqf";
