@@ -221,3 +221,22 @@ __amc(20Rnd_B_AA12_HE,50)
 //__amc(RH_5Rnd_B_Beneli_74Slug,50)
 //__amc(RH_5Rnd_B_Beneli_Pellets,50)
 //__amc(RH_20Rnd_762x51_AR10,50)
+
+_crate addBackpackCargo ["US_UAV_Pack_EP1",2];
+_crate addBackpackCargo ["US_Assault_Pack_EP1",2];
+_crate addBackpackCargo ["US_Patrol_Pack_EP1",2];
+_crate addBackpackCargo ["US_Backpack_EP1",2];
+_crate addBackpackCargo ["CZ_Backpack_EP1",2];
+_crate addBackpackCargo ["CZ_VestPouch_EP1",2];
+_crate addBackpackCargo ["TK_ALICE_Pack_EP1",2];
+_crate addBackpackCargo ["TK_Assault_Pack_EP1",2];
+
+
+
+
+
+
+
+
+
+

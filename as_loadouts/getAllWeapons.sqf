@@ -149,8 +149,7 @@ else
   // ***************************
     
     _OAbp = typeOf unitBackpack player;
-    _string1 = format ["""%1""", _OAbp];
-    _strOABack = _strOABack + _string1;
+    _strOABack = _strOABack + _OAbp;
 
     // ***************************
    //Get the magazines from the OA backpack
@@ -159,32 +158,41 @@ else
 
     _tempRuckMagList = [];
 
-    for "_i" from 0 to (count (_MagazinesRuckList select 0) - 1) do {
-    
-        _tempclass = (_MagazinesRuckList select 0)  select _i;
-        _tempnum = (_MagazinesRuckList select 1)  select _i;
-    
-    
-        for "_j" from 0 to (_tempnum - 1) do {
-        
-            _tempRuckMagList = _tempRuckMagList + [_tempclass];
-        
-        };
-
-    };
-
-
-    for "_i" from 0 to (count _tempRuckMagList) -1 do
+    if (count(_MagazinesRuckList select 0) > 0) then
     {
-        if (_i == ((count _tempRuckMagList) -1)) then 
-        {
-            _strRMags1 = format ["""%1""", _tempRuckMagList select _i];
-            _strRMags = _strRMags + _strRMags1;
-        }else 
-        {
-            _strRMags1 = format ["""%1"",", _tempRuckMagList select _i];
-            _strRMags = _strRMags + _strRMags1;
+
+        for "_i" from 0 to (count (_MagazinesRuckList select 0) - 1) do {
+    
+            _tempclass = (_MagazinesRuckList select 0)  select _i;
+            _tempnum = (_MagazinesRuckList select 1)  select _i;
+    
+    
+            for "_j" from 0 to (_tempnum - 1) do {
+        
+                _tempRuckMagList = _tempRuckMagList + [_tempclass];
+       
+            };
+
         };
+
+        TRACE_1("Returning _tempRuckMagList: ",_tempRuckMagList);
+        _test2 = str _tempRuckMagList;
+        TRACE_1("Returning _tempRuckMagList Stringed: ",_test2 );
+        for "_k" from 0 to (count _tempRuckMagList) -1 do
+        {
+            if (_k == ((count _tempRuckMagList) -1)) then 
+            {
+                _strRMags1 = format ["%1", _tempRuckMagList select _k];
+                _strRMags = _strRMags + _strRMags1;
+            }else 
+            {
+                _strRMags1 = format ["%1`", _tempRuckMagList select _k];
+                _strRMags = _strRMags + _strRMags1;
+            };
+        };
+
+        
+
     };
 
     // ***************************
@@ -195,35 +203,47 @@ else
 
     _tempRuckwepList = [];
 
+    If (count(_WeaponsRuckList select 0) > 0) then
     {
-        _tempnum = _x select 1;
-        _tempclass = _x select 0;
-        for [{_i=0}, {_i<_tempnum}, {_i=_i+1}] do
-        {
-            _tempRuckwepList = _tempRuckwepList + [_tempclass];
+        for "_i" from 0 to (count (_WeaponsRuckList select 0) - 1) do {
+    
+            _tempclass = (_WeaponsRuckList select 0)  select _i;
+            _tempnum = (_WeaponsRuckList select 1)  select _i;
+    
+    
+            for "_j" from 0 to (_tempnum - 1) do {
+        
+                _tempRuckwepList = _tempRuckwepList + [_tempclass];
+       
+            };
+
         };
-    } forEach _WeaponsRuckList;
 
-
-
-    for "_i" from 0 to (count _tempRuckwepList) -1 do
-    {
-        if (_i == ((count _tempRuckwepList) -1)) then 
+        TRACE_1("Returning _tempRuckMagList: ",_tempRuckwepList);
+        _test3 = str _tempRuckMagList;
+        TRACE_1("Returning _tempRuckMagList Stringed: ",_test3 );
+        for "_k" from 0 to (count _tempRuckwepList) -1 do
         {
-            _string1 = format ["""%1""", _tempRuckwepList select _i];
-            _strRWep = _strRWep + _string1;
-        }else 
-        {
-            _strRWep1 = format ["""%1"",", _tempRuckwepList select _i];
-            _strRWep = _strRWep + _strRWep1;
-        };
+            if (_k == ((count _tempRuckwepList) -1)) then 
+            {
+                _strRWep1 = format ["%1", _tempRuckwepList select _k];
+                _strRWep = _strRWep + _strRWep1;
+            }else 
+            {
+                _strRWep1 = format ["%1`", _tempRuckwepList select _k];
+                _strRWep = _strRWep + _strRWep1;
+            };
+        };        
+        
+        
     };
+
   
 };
 
 //format return value, all weapons separated out into an array
 _return_response = [_puid, _strMags, _strWep, _strRMags, _strRWep, _strWOB, _strOABack];
 
-//TRACE_1("Returning weapon response: ",_return_response);
+TRACE_1("Returning weapon response: ",_return_response);
 
 _return_response

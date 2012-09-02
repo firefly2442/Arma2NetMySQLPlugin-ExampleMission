@@ -106,15 +106,22 @@ if (isClass(configFile >> "CfgPatches" >> "ace_main")) then
         {_doc = [player, _x, 1] call ACE_fnc_PackWeapon;} forEach _backpack_weapon;
     };
 } else {
-    player addBackpack _oaBackpack;
-    {
-         (unitBackpack player) addMagazineCargo [_x,1];
-    } forEach _backpack_ammo;
+    
+    _oaruck = _oaBackpack select 0;
+    
+    If (!(_oaruck == "")) then
+    {            
+        player addBackpack _oaruck;
+        {
+            (unitBackpack player) addMagazineCargo [_x,1];
+        } forEach _backpack_ammo;
 
-    {
-        (unitBackpack player) addWeaponCargo [_x,1];
+        {
+            (unitBackpack player) addWeaponCargo [_x,1];
+        } forEach _backpack_weapon;
 
-    } forEach _backpack_weapon;
+    };
+
 
     {player addMagazine _x} forEach _ammo;
     {player addWeapon _x} forEach _weapons;
