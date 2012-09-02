@@ -8,6 +8,10 @@ _allWeapons = [] call FUNC(getAllWeapons);
 
 _dlg = findDisplay AS_LOADOUTS_DIALOG;
 _loadoutsDropDown = _dlg displayCtrl AS_LOADOUTS_dropDownMenu;
+
+// Check if player has a loadout selected.
+if ((lbSize _loadoutsDropDown) == 0) exitwith {hint "You must select a loadout!";};
+
 _unit = player;
 _loadoutName = (_unit call FUNC(getLoadouts)) select (lbCurSel _loadoutsDropDown);
 
