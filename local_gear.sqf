@@ -5,7 +5,7 @@ _crate_loadout = "";
 _crate = "USVehicleBox" createVehicleLocal _crate_pos;
 if (isClass(configFile >> "CfgPatches" >> "ace_main")) then {
 	_crate_loadout = "ACE_Loadouts.sqf";
-    _clearRuck = _crate addAction ["<t color='#B0C4DE'>Clear Ruck</t>","clearRuck.sqf",[],-1,false,true];
+    _clearRuck = _crate addAction ["<t color='#B0C4DE'>Clear ACE Ruck</t>","clearACERuck.sqf",[],-1,false,true];
 } else {
 	_crate_loadout = "Vanilla_Loadouts.sqf";
 };
