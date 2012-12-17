@@ -18,10 +18,8 @@ _unit = player;
 _loadoutName = (_unit call FUNC(getLoadouts)) select (lbCurSel _loadoutsDropDown);
 //TRACE_1("Select Loadout Name: ",_loadoutName);
 
-_strGet = format ["[u=%1,n=%2]", _puid, _loadoutName];
-
 ReturnedDatabaseLoadOuts = nil;
-["as_get_loadout", [_unit, _strGet]] call CBA_fnc_globalEvent;
+["as_get_loadout", [_unit, _puid, _loadoutName]] call CBA_fnc_globalEvent;
 //https://community.bistudio.com/wiki/while
 while {isNil("ReturnedDatabaseLoadOuts")} do {
 	//busy wait until the server responds by setting this variable

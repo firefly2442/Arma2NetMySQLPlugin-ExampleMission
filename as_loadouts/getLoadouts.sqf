@@ -11,7 +11,7 @@ if (isNull _unit || !isPlayer _unit) exitWith {
 	_loadouts
 };
 
-_parameters = format ["u=%1", getPlayerUID _unit];
+_parameters = getPlayerUID _unit;
 
 //TRACE_2("parameters variable: ",_parameters,_unit);
 
