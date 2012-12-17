@@ -66,11 +66,11 @@ CREATE TABLE IF NOT EXISTS `users` (
   `id` int(20) unsigned NOT NULL AUTO_INCREMENT,
   `uid` int(20) unsigned NOT NULL,
   `name` varchar(255) NOT NULL,
-  `ammo` text NOT NULL,
-  `weapons` text NOT NULL,
-  `backpackammo` text NOT NULL,
-  `backpackweapons` text NOT NULL,
-  `weapononback` text NOT NULL,
-  `oabackpack` text NOT NULL,
+  `ammo` text,
+  `weapons` text,
+  `backpackammo` text,
+  `backpackweapons` text,
+  `weapononback` text,
+  `oabackpack` text,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
