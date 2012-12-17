@@ -1,6 +1,6 @@
 CREATE TABLE "users" (
 						"id" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE ,
-						"uid" INTEGER NOT NULL ,
+						"uid" VARCHAR NOT NULL ,
 						"name" VARCHAR NOT NULL ,
 						"ammo" VARCHAR ,
 						"weapons" VARCHAR ,

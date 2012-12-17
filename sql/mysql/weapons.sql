@@ -64,7 +64,7 @@ DELIMITER ;
 
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(20) unsigned NOT NULL AUTO_INCREMENT,
-  `uid` int(20) unsigned NOT NULL,
+  `uid` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `ammo` text,
   `weapons` text,
