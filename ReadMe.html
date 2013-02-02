@@ -52,15 +52,29 @@ have as many as you want.</p>
 
 <ul>
 	<li>First read the instructions and setup Arma2NETMySQLPlugin.</li>
-	<li>Use the provided .sql file (in the "sql" folder) which will load into MySQL and create the appropriate database and stored procedures.</li>
-	<li>Rename this folder "Arma2NetMySQLPlugin-example.utes".  This will be your mission folder running on the Utes map.</li>
-	<li>Copy this folder into your mission directory for Arma2.  It's probably something like:
+	<li>Decide if you will be using MySQL or SQLite for your database.  If you don't know anything about databases, I would pick SQLite as it's easier to setup.</li>
+	<li>For SQLite:</li>
+	<ul>
+		<li>Go into /sql/sqlite/ and find "weapons.sqlite".  This is an empty copy of the SQLite database.</li>
+		<li>Copy that file to the SQLite folder for the Arma2NETMySQL plugin.  See the instructions for Arma2NETMySQL for details.</li>
+	</ul>
+	<li>For MySQL:</li>
+	<ul>
+		<li>Login to your MySQL server</li>
+		<li>Import the /sql/mysql/weapons.sql file into your database.  This will setup the database structure.  Remember to set
+		appropriate permissions for a MySQL user to have access to only this database.  It is <b>NOT</b> recommended to connect as
+		the root user.  This is a big security risk.</li>
+	</ul>
+	<li>Edit the Databases.txt file and provide the appropriate connection line to either SQLite or MySQL.</li>
+	<li>Rename this folder "Arma2NetMySQLPlugin-example.utes" or use the provided PBO if you have a compiled version.</li>
+	<li>Copy this mission into your mission directory for Arma2.  It's probably something like:
 	<pre>C:\Username\My Documents\ArmA 2 Other Profiles\YourNameHere\mpmissions</pre>
 	or...
 	<pre>C:\Username\My Documents\ArmA 2\...</pre>
-	If you're running a dedicated server, you probably know where the missions go.</li>
+	If you're running a dedicated server, put it in the MPMissions folder in your root Arma2 directory.</li>
 	<li>Then launch the beta with ACE (optional), CBA, and Arma2NET mods:
 	<pre>-mod=expansion\beta;expansion\beta\expansion;@CBA;@ACE;@ACEX;@CBA_OA;@CBA_A2;@Arma2NET</pre></li>
+	<li>The example mission is on the Utes map.</li>
 	<li>Run the mission and walk up to the box in front of you.  Using the scrollwheel, select the
 	loadout system.  This opens up the dialog which you can then interact with.  You have the following
 	options.</li>
