@@ -61,9 +61,11 @@ have as many as you want.</p>
 	<li>For MySQL:</li>
 	<ul>
 		<li>Login to your MySQL server</li>
-		<li>Import the /sql/mysql/weapons.sql file into your database.  This will setup the database structure.  Remember to set
-		appropriate permissions for a MySQL user to have access to only this database.  It is <b>NOT</b> recommended to connect as
-		the root user.  This is a big security risk.</li>
+		<li>Edit the /sql/mysql/weapons.sql file.  At the top, change the password from "123" to something more secure.</li>
+		<li>Import the /sql/mysql/weapons.sql file into your database.  This will setup the database structure.  You will probably need
+			to login as the root user to have the appropriate permissions to run the SQL file.  This will setup a user "arma" and a
+			database "weapons" as well as the appropriate permissions to lock down the "arma" user.  I would <b>not</b> recommend setting up
+			the Databases.txt file to use the root user.  This is a big security risk.</li>
 	</ul>
 	<li>Edit the Databases.txt file and provide the appropriate connection line to either SQLite or MySQL.</li>
 	<li>Rename this folder "Arma2NetMySQLPlugin-example.utes" or use the provided PBO if you have a compiled version.</li>
