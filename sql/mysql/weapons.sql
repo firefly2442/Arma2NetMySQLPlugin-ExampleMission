@@ -1,16 +1,16 @@
+-- Create "arma" user
+CREATE USER 'arma'@'%' IDENTIFIED BY '123';
 
---
 -- Database: `weapons`
---
-CREATE DATABASE `weapons` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+CREATE DATABASE IF NOT EXISTS `weapons`;
+
+-- Grant privileges
+GRANT ALL PRIVILEGES ON `weapons` . * TO 'arma'@'%';
+
+-- Switch to database weapons
 USE `weapons`;
 
-
-
---
 -- Table structure for table `users`
---
-
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(20) unsigned NOT NULL AUTO_INCREMENT,
   `uid` varchar(255) NOT NULL,
