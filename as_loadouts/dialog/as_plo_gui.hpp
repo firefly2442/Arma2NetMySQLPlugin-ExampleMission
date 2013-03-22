@@ -54,7 +54,7 @@ class AS_PLO_GUI {
 				y = 0.655773;
 				w = 0.246242;
 				h = 0.115251;
-				tooltip = "After naming the loadout out click to create it.";
+				tooltip = "After naming the loadout click to create it.";
 				onButtonClick = "execVM 'as_loadouts\createNewLoadout.sqf'";
 			};
 			class Nameeditbox: AS_PLO_RscEdit
